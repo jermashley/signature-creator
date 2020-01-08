@@ -11,12 +11,23 @@
       />
 
       <div v-if="canToggle" class="toggle" @click="setToggle(), commitToggle()">
-        <FontAwesomeIcon
-          v-if="toggle"
-          :icon="[`fad`, `toggle-on`]"
-          class="text-green-500"
-        />
-        <FontAwesomeIcon v-else :icon="[`fad`, `toggle-off`]" />
+        <transition name="fade">
+          <FontAwesomeIcon
+            v-if="toggle"
+            :icon="[`fad`, `toggle-on`]"
+            class="text-green-500 toggleIcon"
+            fixed-width
+          />
+        </transition>
+
+        <transition name="fade">
+          <FontAwesomeIcon
+            v-if="!toggle"
+            :icon="[`fad`, `toggle-off`]"
+            class="toggleIcon"
+            fixed-width
+          />
+        </transition>
       </div>
     </div>
   </div>
@@ -142,9 +153,17 @@ input {
 
 .input-group:focus-within {
   .toggle {
+    position: relative;
     transition: 250ms ease-in-out;
 
     @apply bg-gray-300;
+  }
+
+  .toggleIcon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }
 </style>

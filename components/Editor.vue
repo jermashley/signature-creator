@@ -24,44 +24,58 @@
         mutation="name"
       />
 
-      <TextInput
-        v-if="contactCard.name"
-        name="title"
-        label="Title"
-        type="text"
-        placeholder="Logistics Specialist"
-        mutation="title"
-      />
+      <transition name="fade">
+        <TextInput
+          v-if="contactCard.name"
+          name="title"
+          label="Title"
+          type="text"
+          placeholder="Logistics Specialist"
+          mutation="title"
+        />
+      </transition>
 
-      <CompanySelect v-if="contactCard.title" name="company" label="Company" />
+      <transition name="fade">
+        <CompanySelect
+          v-if="contactCard.title"
+          name="company"
+          label="Company"
+        />
+      </transition>
 
-      <DepartmentSelect
-        v-show="contactCompany && contactCompany !== `Prologue Technology`"
-        name="department"
-        label="Department"
-        mutation="department"
-        :can-toggle="true"
-        toggle-mutation="department"
-      />
+      <transition name="fade">
+        <DepartmentSelect
+          v-show="contactCompany && contactCompany !== `Prologue Technology`"
+          name="department"
+          label="Department"
+          mutation="department"
+          :can-toggle="true"
+          toggle-mutation="department"
+        />
+      </transition>
 
-      <LocationSelect
-        v-show="contactCompany"
-        name="location"
-        label="Location"
-        mutation="location"
-        @location-chosen="toggleDownload"
-      />
+      <transition name="fade">
+        <LocationSelect
+          v-show="contactCompany"
+          name="location"
+          label="Location"
+          mutation="location"
+          @location-chosen="toggleDownload"
+        />
+      </transition>
 
-      <TextInput
-        v-if="contactCard.company.name || contactCard.mobilePhone"
-        name="mobileNumber"
-        label="mobile number"
-        type="tel"
-        placeholder="(123) 456-7890"
-        mutation="mobileNumber"
-        :can-toggle="true"
-        toggle-mutation="mobileNumber"
-      />
+      <transition name="fade">
+        <TextInput
+          v-if="contactCard.company.name || contactCard.mobilePhone"
+          name="mobileNumber"
+          label="mobile number"
+          type="tel"
+          placeholder="(123) 456-7890"
+          mutation="mobileNumber"
+          :can-toggle="true"
+          toggle-mutation="mobileNumber"
+        />
+      </transition>
     </form>
   </section>
 </template>

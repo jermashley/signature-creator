@@ -1,36 +1,53 @@
 <template>
-  <section class="flex flex-col items-stretch justify-start">
-    <div
-      v-if="!contactCard.name"
-      class="flex flex-col items-center justify-center flex-grow"
-    >
-      <EmptyStateGraphic class="max-w-sm mx-auto opacity-50" />
+  <section class="relative flex flex-col items-stretch justify-start">
+    <span v-if="!contactCard.name" class="flex-grow"></span>
+    <transition name="fade">
+      <div
+        v-if="!contactCard.name"
+        class="absolute z-50 flex flex-col items-center justify-center"
+        style="top: 50%; left: 50%; transform: translate(-50%, -50%);"
+      >
+        <EmptyStateGraphic class="max-w-sm mx-auto opacity-50" />
 
-      <h2 class="text-xl leading-loose text-center text-gray-600">
-        Nothing yet! Add your information in the editor and we'll build your
-        email signature.
-      </h2>
-    </div>
+        <h2 class="text-xl leading-loose text-center text-gray-600">
+          Nothing yet! Add your information in the editor and we'll build your
+          email signature.
+        </h2>
+      </div>
+    </transition>
 
     <div
       v-if="contactCard.name"
       class="flex flex-col items-center justify-center flex-grow"
     >
-      <span
-        v-if="contactCard.name"
-        class="mb-2 text-sm font-normal text-gray-600 uppercase"
-      >
-        HTML Signature
-      </span>
-      <HtmlSignatureCard ref="HtmlSignatureCard" />
-      <br />
-      <span
-        v-if="download"
-        class="mb-2 text-sm font-normal text-gray-600 uppercase"
-      >
-        Plain Text Signature
-      </span>
-      <PlainTextSignatureCard ref="PlainTextSignatureCard" />
+      <transition name="fade">
+        <span
+          v-if="contactCard.name"
+          class="mb-2 text-sm font-normal text-gray-600 uppercase"
+        >
+          HTML Signature
+        </span>
+      </transition>
+
+      <transition name="fade">
+        <HtmlSignatureCard
+          ref="HtmlSignatureCard"
+          :class="{ 'mb-8': download }"
+        />
+      </transition>
+
+      <transition name="fade">
+        <span
+          v-if="download"
+          class="mb-2 text-sm font-normal text-gray-600 uppercase"
+        >
+          Plain Text Signature
+        </span>
+      </transition>
+
+      <transition name="fade">
+        <PlainTextSignatureCard ref="PlainTextSignatureCard" />
+      </transition>
     </div>
 
     <div class="flex flex-row items-center justify-center w-full mt-16">
