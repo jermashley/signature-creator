@@ -12,21 +12,26 @@
 
       <div v-if="canToggle" class="toggle" @click="setToggle(), commitToggle()">
         <transition name="fade">
-          <FontAwesomeIcon
-            v-if="toggle"
-            :icon="[`fad`, `toggle-on`]"
+          <span
             class="text-green-500 toggleIcon"
-            fixed-width
-          />
+            style=" z-index: 50; display: block;"
+          >
+            <FontAwesomeIcon
+              v-if="toggle"
+              :icon="[`fad`, `toggle-on`]"
+              fixed-width
+            />
+          </span>
         </transition>
 
         <transition name="fade">
-          <FontAwesomeIcon
-            v-if="!toggle"
-            :icon="[`fad`, `toggle-off`]"
-            class="toggleIcon"
-            fixed-width
-          />
+          <span class="toggleIcon" style=" z-index: 40; display: block;">
+            <FontAwesomeIcon
+              v-if="!toggle"
+              :icon="[`fad`, `toggle-off`]"
+              fixed-width
+            />
+          </span>
         </transition>
       </div>
     </div>
@@ -143,6 +148,7 @@ input {
 }
 
 .toggle {
+  position: relative;
   min-width: 62.5px;
 
   /* Comment to keep stylelint from throwing a fit */
@@ -151,19 +157,18 @@ input {
   @apply w-auto px-5 py-3 text-xl bg-gray-300 flex flex-row justify-center items-center text-gray-600 cursor-pointer;
 }
 
+.toggleIcon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .input-group:focus-within {
   .toggle {
-    position: relative;
     transition: 250ms ease-in-out;
 
     @apply bg-gray-300;
-  }
-
-  .toggleIcon {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
   }
 }
 </style>

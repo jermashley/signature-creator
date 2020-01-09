@@ -1,24 +1,35 @@
 <template>
   <div
     v-if="download"
-    style="max-width: 480px; padding: 24px 16px; font-family: Tahoma, Verdana, Segoe, sans-serif; border: 1px solid #e7e6e4;"
+    style="max-width: 512px; padding: 24px 16px; font-family: Tahoma, Verdana, Segoe, sans-serif; border: 1px solid #e7e6e4;"
   >
     {{ contactCard.name }}{{ contactCard.name && contactCard.title ? ` | ` : ``
     }}{{ contactCard.title }}
     <br />
     {{ contactCard.company.name
     }}{{
-      contactCard.department.name && contactCard.department.enabled
+      contactCard.department.name &&
+      contactCard.department.enabled &&
+      contactCard.company.name !== `Prologue Technology`
         ? ` | ${contactCard.department.name}`
         : ``
     }}
-    <br />
+    <br
+      v-if="
+        (contactCard.location.name && contactCard.location.officeNumber) ||
+          mobileNumberExists()
+      "
+    />
     <br />
     {{
-      contactCard.location.name
+      contactCard.location.name && contactCard.location.officeNumber
         ? `T: ${contactCard.location.officeNumber}`
         : ``
-    }}{{ numberAfterOffice() ? ` | ` : ``
+    }}{{
+      contactCard.extension.enabled && contactCard.extension.extension
+        ? ` ${contactCard.extension.extension}`
+        : ``
+    }}{{ numberAfterOffice() && !mobileNumberExists() ? ` | ` : ``
     }}{{ mobileNumberExists() ? `M: ${contactCard.mobileNumber.number}` : ``
     }}{{ numberAfterMobile() ? ` | ` : ``
     }}{{
@@ -26,7 +37,7 @@
         ? `F: ${contactCard.location.faxNumber}`
         : ``
     }}
-    <br />
+    <br v-if="contactCard.location.name" />
     {{
       contactCard.location.name
         ? `${contactCard.location.address.line1}, `
@@ -43,9 +54,9 @@
     }}{{ contactCard.location.name ? contactCard.location.address.zip : `` }}
     <br />
     {{ contactCard.company.name ? contactCard.company.website : `` }}
-    <br />
-    <br />
-    {{ disliamerExists ? disclaimer : `` }}
+    <br v-if="disliamerExists()" />
+    <br v-if="disliamerExists()" />
+    {{ disliamerExists() ? disclaimer : `` }}
   </div>
 </template>
 
@@ -100,10 +111,7 @@ export default {
     },
 
     disliamerExists() {
-      if (
-        this.contactCard.location.name &&
-        this.contactCard.company.name !== `Prologue Technology`
-      ) {
+      if (this.contactCard.company.name !== `Prologue Technology`) {
         return true
       }
     },

@@ -2,18 +2,24 @@
   <div
     v-if="contactCard.name"
     ref="HtmlSignatureCard"
-    style="max-width: 480px; padding: 24px 16px; border: 1px solid #e7e6e4;"
+    style="max-width: 512px; padding: 24px 16px; border: 1px solid #e7e6e4;"
   >
     <table
-      style="max-width: 480px; font-family: Tahoma, Verdana, Segoe, sans-serif;"
+      style="max-width: 480px; font-family: Tahoma, Verdana, Segoe, sans-serif; border-collapse: collapse;"
+      border="0"
     >
       <tbody>
         <!-- Logo, name, title, department -->
         <tr>
-          <td>
+          <td
+            :style="{
+              borderRight: contactCard.company.name ? `1px solid #e7e6e4` : ``,
+              paddingRight: contactCard.company.name ? `32px` : ``,
+            }"
+          >
             <div
               v-if="contactCard.company.name"
-              style="display: inline-block; padding-right: 32px; vertical-align: text-bottom;"
+              style="display: inline-block; vertical-align: text-bottom;"
             >
               <img
                 :src="contactCard.company.logo"
@@ -23,14 +29,14 @@
             </div>
           </td>
 
-          <td>
+          <td
+            :style="{
+              paddingLeft: contactCard.company.name ? `32px` : ``,
+            }"
+          >
             <div
               v-if="contactCard.name"
               style=" display: inline-block; margin: 0; padding: 0;"
-              :style="{
-                borderLeft: contactCard.company.name ? `1px solid #e7e6e4` : ``,
-                paddingLeft: contactCard.company.name ? `32px` : ``,
-              }"
             >
               <p
                 style="margin: 0; padding: 0; font-weight: bold; font-size: 18px; mso-line-height: exactly; line-height: 100%;"
@@ -70,16 +76,29 @@
             style=" max-width: min-content; margin: 0; padding: 0;"
           >
             <p
+              v-if="
+                contactCard.location.officeNumber ||
+                  contactCard.location.faxNumber ||
+                  (contactCard.mobileNumber.number &&
+                    contactCard.mobileNumber.enabled)
+              "
               style="margin: 0; margin-top: 40px; padding: 0; padding-right: 4px; font-weight: normal; font-size: 14px;"
             >
-              <span>
+              <span v-if="contactCard.location.officeNumber">
                 <strong>T:</strong>
                 {{ contactCard.location.officeNumber }}
+                {{
+                  contactCard.extension.enabled &&
+                  contactCard.extension.extension
+                    ? contactCard.extension.extension
+                    : ``
+                }}
               </span>
 
               <span
                 v-if="
-                  (contactCard.mobileNumber.number &&
+                  (contactCard.location.officeNumber &&
+                    contactCard.mobileNumber.number &&
                     contactCard.mobileNumber.enabled) ||
                     contactCard.location.faxNumber
                 "

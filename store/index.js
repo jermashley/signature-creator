@@ -28,6 +28,10 @@ export const state = () => ({
       number: null,
       enabled: true,
     },
+    extension: {
+      extension: null,
+      enabled: true,
+    },
     dislaimer: true,
   },
 
@@ -61,7 +65,7 @@ export const state = () => ({
     {
       name: `Prologue Technology`,
       company: `Prologue Technology`,
-      officeNumber: `(636) 265-1460`,
+      officeNumber: ``,
       faxNumber: ``,
       address: {
         line1: `2342 Technology Drive`,
@@ -234,6 +238,14 @@ export const mutations = {
 
   resetLocation(state) {
     state.contactCard.location = state.emptyLocation
+  },
+
+  extension(state, extension) {
+    state.contactCard.extension.extension = `x${extension}`
+  },
+
+  toggleExtension(state) {
+    state.contactCard.extension.enabled = !state.contactCard.extension.enabled
   },
 
   mobileNumber(state, mobileNumber) {

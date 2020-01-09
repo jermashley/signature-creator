@@ -66,6 +66,19 @@
 
       <transition name="fade">
         <TextInput
+          v-if="contactCard.company.officePhone"
+          name="extension"
+          label="extension"
+          type="text"
+          placeholder="123"
+          mutation="extension"
+          :can-toggle="true"
+          toggle-mutation="extension"
+        />
+      </transition>
+
+      <transition name="fade">
+        <TextInput
           v-if="contactCard.company.name || contactCard.mobilePhone"
           name="mobileNumber"
           label="mobile number"
