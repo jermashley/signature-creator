@@ -147,17 +147,18 @@ export default {
         this.message = `${message} Please try logging in with an approved email address.`
 
         this.$auth.logout().then(() => this.redirectToHome())
-      } else if (this.sortHashedUrl().access_token) {
-        this.error = false
-        this.success = true
-        this.message = `Success! You're logged in.`
-
-        this.redirectToCreator()
-      } else {
-        this.error = false
-        this.success = false
-        this.redirectToHome()
       }
+      // else if (this.sortHashedUrl().access_token) {
+      //   this.error = false
+      //   this.success = true
+      //   this.message = `Success! You're logged in.`
+
+      //   this.redirectToCreator()
+      // } else {
+      //   this.error = false
+      //   this.success = false
+      //   this.redirectToHome()
+      // }
     },
   },
 }
