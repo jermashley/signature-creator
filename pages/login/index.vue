@@ -6,61 +6,19 @@
     <div class="flex-grow w-full max-w-6xl p-16">
       <Logo class="max-w-lg mx-auto" />
 
-      <h1
-        class="mt-24 text-2xl font-normal text-center text-gray-700"
-        :class="{ 'text-green-500': success }"
-      >
-        {{ message }}
+      <h1 class="mt-24 text-2xl font-normal text-center text-gray-700">
+        Redirecting to login...see you shortly!
       </h1>
-
-      <div v-if="error" class="flex flex-col items-center justify-center mt-4">
-        <p class="text-base font-normal text-center text-red-600">
-          Approved email domains:
-          <code class="font-mono text-sm font-normal">
-            <span v-for="(domain, index) in approvedEmailDomains" :key="domain">
-              {{ domain
-              }}{{ index !== approvedEmailDomains.length - 1 ? `,` : `.` }}
-            </span>
-          </code>
-        </p>
-      </div>
-    </div>
-
-    <div
-      v-if="error"
-      class="flex flex-col items-center justify-center w-full p-16"
-    >
-      <nuxt-link
-        to="/"
-        class="px-16 py-3 mt-20 text-xl font-semibold text-gray-700 uppercase bg-gray-300 border-2 border-transparent border-solid opacity-100 hover:opacity-75"
-      >
-        <FontAwesomeIcon
-          :icon="[`fad`, `home-alt`]"
-          fixed-width
-          style="color: #ef633b;"
-          class="mr-2"
-        />
-        Return Home
-      </nuxt-link>
     </div>
   </main>
 </template>
 
 <script>
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faHomeAlt } from '@fortawesome/pro-duotone-svg-icons'
-
-library.add(faHomeAlt)
-
 export default {
   auth: `guest`,
 
   components: {
     Logo: () => import(`~/components/Logo`),
-    FontAwesomeIcon: () =>
-      import(`@fortawesome/vue-fontawesome`).then(
-        ({ FontAwesomeIcon }) => FontAwesomeIcon
-      ),
   },
 
   data() {

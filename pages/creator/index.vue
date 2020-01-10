@@ -7,6 +7,8 @@
 
 <script>
 export default {
+  auth: true,
+
   components: {
     Editor: () => import(`~/components/Editor`),
     Viewer: () => import(`~/components/Viewer`),

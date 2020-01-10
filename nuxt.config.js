@@ -11,6 +11,9 @@ export default {
     redirect: {
       home: `/`,
       login: `/login`,
+      callback: `/`,
+      creator: `/creator`,
+      logout: `/logout`,
     },
 
     strategies: {
