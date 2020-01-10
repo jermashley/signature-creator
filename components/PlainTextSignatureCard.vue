@@ -29,9 +29,9 @@
       contactCard.extension.enabled && contactCard.extension.extension
         ? ` ${contactCard.extension.extension}`
         : ``
-    }}{{ numberAfterOffice() && !mobileNumberExists() ? ` | ` : ``
+    }}{{ numberAfterOffice() && mobileNumberExists() ? ` | ` : ``
     }}{{ mobileNumberExists() ? `M: ${contactCard.mobileNumber.number}` : ``
-    }}{{ numberAfterMobile() ? ` | ` : ``
+    }}{{ contactCard.location.faxNumber ? ` | ` : ``
     }}{{
       contactCard.location.faxNumber
         ? `F: ${contactCard.location.faxNumber}`
