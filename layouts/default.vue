@@ -4,10 +4,6 @@
   </div>
 </template>
 
-<script>
-export default {}
-</script>
-
 <style lang="scss">
 body {
   -webkit-font-smoothing: subpixel-antialiased;

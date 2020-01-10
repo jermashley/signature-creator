@@ -47,6 +47,11 @@
 </template>
 
 <script>
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faHomeAlt } from '@fortawesome/pro-duotone-svg-icons'
+
+library.add(faHomeAlt)
+
 export default {
   auth: `guest`,
 

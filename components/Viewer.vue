@@ -73,6 +73,10 @@
 <script>
 import FileSaver from 'file-saver'
 import { mapGetters } from 'vuex'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faDownload } from '@fortawesome/pro-duotone-svg-icons'
+
+library.add(faDownload)
 
 export default {
   name: `Viewer`,
