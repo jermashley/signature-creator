@@ -5,18 +5,32 @@
     </div>
 
     <div class="flex flex-col items-end justify-start">
-      <a
-        href="https://flatworldgs.com"
-        target="_blank"
-        class="text-base font-medium text-blue-700 hover:text-blue-500"
-      >
-        FWGS Home
-        <FontAwesomeIcon
-          class="ml-2"
-          :icon="[`fad`, `long-arrow-right`]"
-          fixed-width
-        />
-      </a>
+      <div v-if="$auth.loggedIn" class="flex flex-row items-center justify-end">
+        <a
+          href="https://flatworldgs.com"
+          target="_blank"
+          class="block mr-4 text-base font-medium text-blue-700 hover:text-blue-500"
+        >
+          FWGS Home
+          <FontAwesomeIcon
+            class="inline ml-1"
+            :icon="[`fad`, `home-alt`]"
+            fixed-width
+          />
+        </a>
+
+        <button
+          class="block text-base font-medium text-blue-700 hover:text-red-500"
+          @click="$auth.logout()"
+        >
+          Logout
+          <FontAwesomeIcon
+            class="inline ml-1"
+            :icon="[`fad`, `sign-out`]"
+            fixed-width
+          />
+        </button>
+      </div>
 
       <h1 class="text-base font-bold text-right text-gray-700 uppercase">
         Email Signature Creator
@@ -27,9 +41,9 @@
 
 <script>
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faLongArrowRight } from '@fortawesome/pro-duotone-svg-icons'
+import { faHomeAlt, faSignOut } from '@fortawesome/pro-duotone-svg-icons'
 
-library.add(faLongArrowRight)
+library.add(faHomeAlt, faSignOut)
 
 export default {
   name: `Header`,

@@ -98,12 +98,6 @@ export default {
     }),
   },
 
-  mounted() {
-    setTimeout(() => {
-      this.getRef()
-    }, 6000)
-  },
-
   methods: {
     downloadFiles() {
       if (this.download) {

@@ -1,6 +1,5 @@
 export const state = () => ({
   contactCard: {
-    // logo: false,
     name: null,
     title: null,
     company: {
