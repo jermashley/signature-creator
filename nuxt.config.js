@@ -1,10 +1,10 @@
-const env = require(`dotenv`).config().parsed
+require(`dotenv`).config()
 
 export default {
-  mode: `universal`,
+  mode: `spa`,
 
   env: {
-    baseUrl: env.BASE_URL || `http://localhost:3000`,
+    baseUrl: process.env.BASE_URL || `http://localhost:3000`,
   },
 
   auth: {
@@ -15,8 +15,8 @@ export default {
 
     strategies: {
       auth0: {
-        domain: env.AUTH0_DOMAIN || ``,
-        client_id: env.AUTH0_CLIENT || ``,
+        domain: process.env.AUTH0_DOMAIN || ``,
+        client_id: process.env.AUTH0_CLIENT || ``,
       },
     },
   },
@@ -29,14 +29,14 @@ export default {
    ** Headers of the page
    */
   head: {
-    title: env.npm_package_name || ``,
+    title: process.env.npm_package_name || ``,
     meta: [
       { charset: `utf-8` },
       { name: `viewport`, content: `width=device-width, initial-scale=1` },
       {
         hid: `description`,
         name: `description`,
-        content: env.npm_package_description || ``,
+        content: process.env.npm_package_description || ``,
       },
     ],
     link: [
@@ -63,12 +63,10 @@ export default {
    ** Nuxt.js dev-modules
    */
   buildModules: [
-    // Doc: https://github.com/nuxt-community/eslint-module
     `@nuxtjs/eslint-module`,
-    // Doc: https://github.com/nuxt-community/stylelint-module
     `@nuxtjs/stylelint-module`,
-    // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
     `@nuxtjs/tailwindcss`,
+    `@nuxtjs/dotenv`,
   ],
   /*
    ** Nuxt.js modules

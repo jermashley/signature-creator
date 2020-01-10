@@ -9,7 +9,7 @@
       >
         <EmptyStateGraphic class="max-w-sm mx-auto opacity-50" />
 
-        <h2 class="text-xl leading-loose text-center text-gray-600">
+        <h2 class="mt-8 text-xl leading-loose text-center text-gray-600">
           Nothing yet! Add your information in the editor and we'll build your
           email signature.
         </h2>
