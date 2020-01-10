@@ -11,7 +11,7 @@
       </h1>
 
       <p
-        v-if="!$auth.loggedIn"
+        v-if="!$auth.loggedIn && !error && !success"
         class="mt-8 text-xl font-normal leading-loose text-center text-gray-700"
       >
         Howdy there! Ready to start making your email signature? First, let's
@@ -20,7 +20,7 @@
       </p>
 
       <p
-        v-if="!$auth.loggedIn"
+        v-if="!$auth.loggedIn && success"
         class="mt-4 text-xl font-normal leading-loose text-center text-gray-700"
       >
         Click on the link below to login and get started!
@@ -30,11 +30,16 @@
         v-if="$auth.loggedIn"
         class="mt-8 text-xl font-normal leading-loose text-center text-gray-700"
       >
-        Howdy there! Click on the link below to get started!
+        Howdy there! Click on the link below to get started building your
+        signature!
       </p>
 
-      <div v-if="error" class="flex flex-col items-center justify-center mt-4">
-        <p class="text-base font-normal text-center text-red-600">
+      <div class="flex flex-col items-center justify-center mt-4">
+        <p class="text-base font-normal text-center text-gray-600">
+          {{ message }}
+        </p>
+
+        <p v-if="error" class="text-base font-normal text-center text-red-600">
           Approved email domains:
           <code class="font-mono text-sm font-normal">
             <span v-for="(domain, index) in approvedEmailDomains" :key="domain">
@@ -110,6 +115,7 @@ export default {
 
   data() {
     return {
+      message: ``,
       success: false,
       error: false,
       approvedEmailDomains: [
