@@ -10,7 +10,7 @@ export default {
   auth: {
     redirect: {
       home: false,
-      login: `/creator`,
+      login: false,
     },
 
     strategies: {
