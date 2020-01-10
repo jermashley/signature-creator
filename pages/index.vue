@@ -87,11 +87,6 @@
 </template>
 
 <script>
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faSignIn, faSignOut, faStar } from '@fortawesome/pro-duotone-svg-icons'
-
-library.add(faSignIn, faSignOut, faStar)
-
 export default {
   auth: `guest`,
 

@@ -32,7 +32,7 @@
         class="px-16 py-3 mt-20 text-xl font-semibold text-gray-700 uppercase bg-gray-300 border-2 border-transparent border-solid opacity-100 hover:opacity-75"
       >
         <FontAwesomeIcon
-          :icon="[`fad`, `home`]"
+          :icon="[`fad`, `home-alt`]"
           fixed-width
           style="color: #ef633b;"
           class="mr-2"
@@ -44,11 +44,6 @@
 </template>
 
 <script>
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faHome } from '@fortawesome/pro-duotone-svg-icons'
-
-library.add(faHome)
-
 export default {
   auth: `guest`,
 

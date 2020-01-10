@@ -40,11 +40,6 @@
 </template>
 
 <script>
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faHomeAlt, faSignOut } from '@fortawesome/pro-duotone-svg-icons'
-
-library.add(faHomeAlt, faSignOut)
-
 export default {
   name: `Header`,
 

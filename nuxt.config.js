@@ -73,7 +73,12 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: [`@nuxtjs/axios`, `@nuxtjs/dotenv`, `@nuxtjs/auth`],
+  modules: [
+    `@nuxtjs/axios`,
+    `@nuxtjs/dotenv`,
+    `@nuxtjs/auth`,
+    `nuxt-fontawesome`,
+  ],
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
@@ -82,6 +87,23 @@ export default {
   /*
    ** Build configuration
    */
+  fontawesome: {
+    imports: [
+      {
+        set: `@fortawesome/pro-duotone-svg-icons`,
+        icons: [
+          `faSignIn`,
+          `faSignOut`,
+          `faStar`,
+          `faHomeAlt`,
+          `faToggleOff`,
+          `faToggleOn`,
+          `faDownload`,
+        ],
+      },
+    ],
+  },
+
   build: {
     /*
      ** You can extend webpack config here

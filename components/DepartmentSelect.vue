@@ -70,10 +70,6 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faToggleOff, faToggleOn } from '@fortawesome/pro-duotone-svg-icons'
-
-library.add(faToggleOff, faToggleOn)
 
 export default {
   name: `DepartmentSelect`,
