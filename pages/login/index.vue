@@ -130,7 +130,7 @@ export default {
     redirectToCreator() {
       setTimeout(() => {
         window.location = `/creator`
-      }, 1000)
+      }, 750)
     },
 
     onLoad() {
