@@ -20,7 +20,7 @@
         </a>
 
         <button
-          class="block text-base font-medium text-blue-700 hover:text-red-500"
+          class="block text-base font-medium text-red-500 hover:text-red-500"
           @click="$auth.logout()"
         >
           Logout
