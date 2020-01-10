@@ -47,10 +47,10 @@
     </div>
 
     <div class="flex flex-col items-center justify-center w-full p-16">
-      <nuxt-link
+      <button
         v-if="!$auth.loggedIn"
-        to="/login"
         class="px-16 py-3 text-xl font-semibold text-gray-700 uppercase bg-gray-300 opacity-100 hover:opacity-75"
+        @click="$auth.loginWith(`auth0`)"
       >
         <FontAwesomeIcon
           :icon="[`fad`, `sign-in`]"
@@ -59,7 +59,7 @@
           class="mr-2"
         />
         Log in
-      </nuxt-link>
+      </button>
 
       <nuxt-link
         v-if="$auth.loggedIn"
@@ -75,10 +75,10 @@
         Get started
       </nuxt-link>
 
-      <nuxt-link
+      <button
         v-if="$auth.loggedIn"
         class="mt-8 text-base font-normal text-red-500 bg-transparent opacity-100 hover:opacity-75"
-        to="logout"
+        @click="$auth.logout()"
       >
         Log out
         <FontAwesomeIcon
@@ -86,7 +86,7 @@
           fixed-width
           class="ml-2 color-red-500"
         />
-      </nuxt-link>
+      </button>
     </div>
   </main>
 </template>

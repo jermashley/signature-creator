@@ -10,10 +10,10 @@ export default {
   auth: {
     redirect: {
       home: `/`,
-      login: `/login`,
+      login: `/`,
       callback: `/`,
-      creator: `/creator`,
-      logout: `/logout`,
+      logout: `/`,
+      creator: `/login`,
     },
 
     strategies: {

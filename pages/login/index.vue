@@ -15,108 +15,16 @@
 
 <script>
 export default {
-  auth: `guest`,
+  auth: false,
 
   components: {
     Logo: () => import(`~/components/Logo`),
   },
 
-  data() {
-    return {
-      message: `Redirecting to login...see you shortly!`,
-      success: false,
-      error: false,
-      approvedEmailDomains: [
-        `@flatworldgs.com`,
-        `@flatworldsc.com`,
-        `@ram-intl.com`,
-        `@ramcrating.com`,
-        `@prologuetechnology.com`,
-      ],
-    }
-  },
-
   created() {
-    this.onLoad()
-  },
-
-  methods: {
-    sortHashedUrl() {
-      // Create empty object
-      let response = {}
-
-      // Get hash from URL
-      let hash = this.$route.hash
-
-      if (hash.length) {
-        // Trim hashbang off of URL
-        hash = hash.slice(1)
-
-        // Create array out of hash parts at each '&'
-        const fragments = hash.split(`&`)
-
-        // Loop through hash array and add key/value pairs to empty object
-        fragments.forEach((fragment) => {
-          const array = fragment.split(`=`)
-
-          response = {
-            [array[0]]: array[1],
-            ...response,
-          }
-          return response
-        })
-
-        return response
-      } else {
-        console.log(`No hash, returning false.`)
-        return false
-      }
-    },
-
-    redirectToLogin() {
-      setTimeout(() => {
-        this.$auth.loginWith(`auth0`)
-      }, 1500)
-    },
-
-    redirectToHome() {
-      setTimeout(() => {
-        this.$router.replace({ path: `/` })
-      }, 10000)
-    },
-
-    redirectToCreator() {
-      setTimeout(() => {
-        window.location = `/creator`
-      }, 750)
-    },
-
-    onLoad() {
-      console.log(this.sortHashedUrl())
-      if (this.sortHashedUrl() === false) {
-        this.error = false
-        this.success = false
-        this.redirectToLogin()
-      } else if (this.sortHashedUrl().error) {
-        this.error = true
-        this.success = false
-
-        const message = decodeURI(this.sortHashedUrl().error_description)
-        this.message = `${message} Please try logging in with an approved email address.`
-
-        this.$auth.logout().then(() => this.redirectToHome())
-      } else if (this.sortHashedUrl().access_token) {
-        this.error = false
-        this.success = true
-        this.message = `Success! You're logged in.`
-
-        this.redirectToCreator()
-      } else {
-        this.error = false
-        this.success = false
-        this.redirectToHome()
-      }
-    },
+    this.$auth.loggedIn
+      ? this.$router.push(`/creator`)
+      : this.$auth.loginWith(`auth0`)
   },
 }
 </script>
