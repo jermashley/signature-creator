@@ -30,14 +30,7 @@
         v-if="$auth.loggedIn"
         class="mt-8 text-xl font-normal leading-loose text-center text-gray-700"
       >
-        Howdy there! Looks like you're already logged in.
-      </p>
-
-      <p
-        v-if="$auth.loggedIn"
-        class="mt-4 text-xl font-normal leading-loose text-center text-gray-700"
-      >
-        Click on the link below to get started!
+        Howdy there! Click on the link below to get started!
       </p>
     </div>
 
