@@ -5,6 +5,7 @@ export default {
 
   env: {
     baseUrl: process.env.BASE_URL || `http://localhost:3000`,
+    auth0Domain: process.env.AUTH0_DOMAIN || `flatworldgs.auth0.com`,
   },
 
   auth: {
@@ -12,7 +13,9 @@ export default {
       home: `/`,
       login: `/`,
       callback: `/`,
-      logout: `/`,
+      logout: `https://${
+        process.env.AUTH0_DOMAIN
+      }/v2/logout?returnTo=${encodeURIComponent(process.env.BASE_URL)}`,
       creator: `/login`,
     },
 

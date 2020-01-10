@@ -129,6 +129,7 @@ export default {
   },
 
   created() {
+    console.log(this.$router)
     this.onLoad()
   },
 
@@ -160,7 +161,6 @@ export default {
 
         return response
       } else {
-        console.log(`No hash, returning false.`)
         return false
       }
     },
