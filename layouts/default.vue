@@ -4,6 +4,13 @@
   </div>
 </template>
 
+<script>
+import { config } from '@fortawesome/fontawesome-svg-core'
+config.autoAddCss = false
+
+export default {}
+</script>
+
 <style lang="scss">
 body {
   -webkit-font-smoothing: subpixel-antialiased;

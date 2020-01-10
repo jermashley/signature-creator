@@ -19,9 +19,9 @@
           />
         </a>
 
-        <button
+        <nuxt-link
           class="block text-base font-medium text-red-500 hover:text-red-500"
-          @click="$auth.logout()"
+          to="logout"
         >
           Logout
           <FontAwesomeIcon
@@ -29,7 +29,7 @@
             :icon="[`fad`, `sign-out`]"
             fixed-width
           />
-        </button>
+        </nuxt-link>
       </div>
 
       <h1 class="text-base font-bold text-right text-gray-700 uppercase">

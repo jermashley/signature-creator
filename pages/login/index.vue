@@ -6,7 +6,10 @@
     <div class="flex-grow w-full max-w-6xl p-16">
       <Logo class="max-w-lg mx-auto" />
 
-      <h1 class="mt-24 text-2xl font-normal text-center text-gray-700">
+      <h1
+        class="mt-24 text-2xl font-normal text-center text-gray-700"
+        :class="{ 'text-green-500': success }"
+      >
         {{ message }}
       </h1>
 
@@ -58,6 +61,7 @@ export default {
   data() {
     return {
       message: `Redirecting to login...see you shortly!`,
+      success: false,
       error: false,
       approvedEmailDomains: [
         `@flatworldgs.com`,
@@ -127,25 +131,26 @@ export default {
     onLoad() {
       console.log(this.sortHashedUrl())
       if (this.sortHashedUrl() === false) {
-        console.log(`Heading to login page.`)
         this.error = false
+        this.success = false
         this.redirectToLogin()
       } else if (this.sortHashedUrl().error) {
-        console.log(this.sortHashedUrl().error)
         this.error = true
+        this.success = false
 
         const message = decodeURI(this.sortHashedUrl().error_description)
         this.message = `${message} Please try logging in with an approved email address.`
 
         this.$auth.logout().then(() => this.redirectToHome())
       } else if (this.sortHashedUrl().access_token) {
-        console.log(this.sortHashedUrl().access_token)
         this.error = false
-        this.message = `Success! You're logged in. Let's get to making that signature.`
+        this.success = true
+        this.message = `Success! You're logged in.`
 
         this.redirectToCreator()
       } else {
         this.error = false
+        this.success = false
         this.redirectToHome()
       }
     },

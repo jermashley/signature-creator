@@ -70,10 +70,10 @@
         Get started
       </nuxt-link>
 
-      <button
+      <nuxt-link
         v-if="$auth.loggedIn"
         class="mt-8 text-base font-normal text-red-500 bg-transparent opacity-100 hover:opacity-75"
-        @click="$auth.logout()"
+        to="logout"
       >
         Log out
         <FontAwesomeIcon
@@ -81,7 +81,7 @@
           fixed-width
           class="ml-2 color-red-500"
         />
-      </button>
+      </nuxt-link>
     </div>
   </main>
 </template>

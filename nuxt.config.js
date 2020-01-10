@@ -10,7 +10,7 @@ export default {
   auth: {
     redirect: {
       home: false,
-      login: false,
+      login: `/login`,
     },
 
     strategies: {
@@ -54,7 +54,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: [`@fortawesome/fontawesome-svg-core/styles.css`],
   /*
    ** Plugins to load before mounting the App
    */
@@ -76,6 +76,7 @@ export default {
     `@nuxtjs/dotenv`,
     `@nuxtjs/auth`,
     `nuxt-fontawesome`,
+    `cookie-universal-nuxt`,
   ],
   /*
    ** Axios module configuration

@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  created() {
+  mounted() {
     this.$auth.loggedIn ? this.$auth.logout() : this.$router.push(`/`)
   },
 }
