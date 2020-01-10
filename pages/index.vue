@@ -53,7 +53,7 @@
 
     <div class="flex flex-col items-center justify-center w-full p-16">
       <button
-        v-if="!$auth.loggedIn"
+        v-if="!$auth.loggedIn && !error"
         class="px-16 py-3 text-xl font-semibold text-gray-700 uppercase bg-gray-300 opacity-100 hover:opacity-75"
         @click="$auth.loginWith(`auth0`)"
       >
@@ -65,6 +65,20 @@
         />
         Log in
       </button>
+
+      <a
+        v-if="!$auth.loggedIn && error"
+        class="px-16 py-3 text-xl font-semibold text-gray-700 uppercase bg-gray-300 opacity-100 hover:opacity-75"
+        :href="forbiddenEmailLogoutRedirectUrl"
+      >
+        <FontAwesomeIcon
+          :icon="[`fad`, `exchange`]"
+          fixed-width
+          style="color: #ef633b;"
+          class="mr-2"
+        />
+        Try again
+      </a>
 
       <nuxt-link
         v-if="$auth.loggedIn"
@@ -98,9 +112,14 @@
 
 <script>
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faSignIn, faSignOut, faStar } from '@fortawesome/pro-duotone-svg-icons'
+import {
+  faSignIn,
+  faSignOut,
+  faStar,
+  faExchange,
+} from '@fortawesome/pro-duotone-svg-icons'
 
-library.add(faSignIn, faSignOut, faStar)
+library.add(faSignIn, faSignOut, faStar, faExchange)
 
 export default {
   auth: `guest`,
@@ -111,6 +130,11 @@ export default {
       import(`@fortawesome/vue-fontawesome`).then(
         ({ FontAwesomeIcon }) => FontAwesomeIcon
       ),
+  },
+
+  asyncData(context) {
+    const { baseUrl, auth0Domain } = context.env
+    return { baseUrl, auth0Domain }
   },
 
   data() {
@@ -128,8 +152,15 @@ export default {
     }
   },
 
+  computed: {
+    forbiddenEmailLogoutRedirectUrl() {
+      const baseUrl = encodeURIComponent(this.baseUrl)
+      const logoutUrl = `https://${this.auth0Domain}/v2/logout?returnTo=${baseUrl}`
+      return logoutUrl
+    },
+  },
+
   created() {
-    console.log(this.$router)
     this.onLoad()
   },
 
@@ -189,9 +220,7 @@ export default {
         this.success = false
 
         const message = decodeURI(this.sortHashedUrl().error_description)
-        this.message = `${message} Please try logging in with an approved email address.`
-
-        this.$router.push(`/logout`)
+        this.message = `${message} Please, return home and try logging in with an approved email address.`
       } else if (this.sortHashedUrl().access_token) {
         this.error = false
         this.success = true
