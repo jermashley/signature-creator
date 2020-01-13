@@ -209,9 +209,7 @@ export default {
     },
 
     redirectToCreator() {
-      setTimeout(() => {
-        window.location = `/creator`
-      }, 750)
+      window.location = `/creator`
     },
 
     onLoad() {
@@ -228,9 +226,6 @@ export default {
 
         this.redirectToCreator()
       } else {
-        // this.error = false
-        // this.success = false
-        // this.redirectToHome()
         return null
       }
     },
