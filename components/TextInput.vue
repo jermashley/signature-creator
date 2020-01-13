@@ -105,7 +105,6 @@ export default {
       const capitalizedToggleMutation =
         toggleMutation.charAt(0).toUpperCase() + toggleMutation.slice(1)
 
-      console.log(capitalizedToggleMutation)
       this.$store.commit(`toggle${capitalizedToggleMutation}`)
     },
   },
