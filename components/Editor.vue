@@ -7,7 +7,8 @@
       in your signature. Once you have finished, download your signature pack.
       Then,
       <a
-        href="#"
+        href="https://youtu.be/RSKTcdo3_4s"
+        target="_blank"
         class="leading-loose text-blue-700 underline hover:text-blue-500"
       >
         learn how to add your new signature
