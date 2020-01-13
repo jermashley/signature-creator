@@ -16,6 +16,7 @@
               borderRight: contactCard.company.name ? `1px solid #e7e6e4` : ``,
               paddingRight: contactCard.company.name ? `32px` : ``,
             }"
+            width="160"
           >
             <div
               v-if="contactCard.company.name"
@@ -190,10 +191,12 @@
           "
         >
           <td colspan="2">
+            <!-- eslint-disable -->
             <p
               style="margin-top: 24px; font-size: 12px; opacity: 0.85;"
               v-html="disclaimer"
             />
+            <!-- eslint-enable -->
           </td>
         </tr>
       </tbody>
