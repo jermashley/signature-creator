@@ -81,7 +81,7 @@ export default {
     `@nuxtjs/axios`,
     `@nuxtjs/dotenv`,
     `@nuxtjs/auth`,
-    [`@nuxtjs/robots`, { robots: { UserAgent: `*`, Disallow: `/` } }],
+    `@nuxtjs/robots`,
   ],
   /*
    ** Axios module configuration
@@ -97,4 +97,6 @@ export default {
      ** You can extend webpack config here
      */
   },
+
+  robots: { UserAgent: `*`, Disallow: `/` },
 }
