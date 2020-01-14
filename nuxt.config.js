@@ -77,7 +77,12 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: [`@nuxtjs/axios`, `@nuxtjs/dotenv`, `@nuxtjs/auth`],
+  modules: [
+    `@nuxtjs/axios`,
+    `@nuxtjs/dotenv`,
+    `@nuxtjs/auth`,
+    [`@nuxtjs/robots`, { robots: { UserAgent: `*`, Disallow: `/` } }],
+  ],
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options

@@ -49,10 +49,10 @@ export const state = () => ({
 
   locations: [
     {
-      name: `Headquarters`,
+      name: `Global Solutions Headquarters`,
       company: `Flat World Global Solutions`,
       officeNumber: `(636) 265-1460`,
-      faxNumber: `(636) 265-1460`,
+      faxNumber: `(636) 787-0940`,
       address: {
         line1: `2342 Technology Drive`,
         line2: `Suite 310`,
@@ -64,7 +64,7 @@ export const state = () => ({
     {
       name: `Prologue Technology`,
       company: `Prologue Technology`,
-      officeNumber: ``,
+      officeNumber: `(314) 548-7570`,
       faxNumber: ``,
       address: {
         line1: `2342 Technology Drive`,
@@ -75,14 +75,14 @@ export const state = () => ({
       },
     },
     {
-      name: `International - Saint Louis`,
+      name: `Custom Crating`,
       company: `Flat World Global Solutions`,
-      officeNumber: `(636) 265-1460`,
-      faxNumber: `(636) 265-1460`,
+      officeNumber: `(314) 524-9092`,
+      faxNumber: `(314) 524-9095`,
       address: {
         line1: `8949 Frost Ave`,
         line2: ``,
-        city: `Berkeley`,
+        city: `St. Louis`,
         state: `MO`,
         zip: `63134`,
       },
@@ -103,8 +103,8 @@ export const state = () => ({
     {
       name: `International - Dallas`,
       company: `Flat World Global Solutions`,
-      officeNumber: `(636) 265-1460`,
-      faxNumber: `(636) 265-1460`,
+      officeNumber: `(972) 425-0197`,
+      faxNumber: ``,
       address: {
         line1: `2370 W Airfield Drive`,
         line2: `Suite 100`,
@@ -132,11 +132,12 @@ export const state = () => ({
     {
       company: `Flat World Global Solutions`,
       departments: [
-        `Supply Chain`,
-        `International`,
+        `Sales`,
+        `Domestic Transportation`,
+        `International Transportation`,
+        `Ecommerce`,
         `Project Management`,
-        `Audit`,
-        `Claims`,
+        `Custom Crating`,
       ],
     },
     {
